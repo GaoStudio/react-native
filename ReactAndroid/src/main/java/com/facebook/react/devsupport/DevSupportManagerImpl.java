@@ -7,7 +7,6 @@
 
 package com.facebook.react.devsupport;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -21,7 +20,7 @@ import android.content.pm.PackageManager;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Pair;
 import android.widget.Toast;
 import com.facebook.common.logging.FLog;
@@ -95,7 +94,6 @@ import okhttp3.RequestBody;
  * {@code <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>}
  * {@code <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>}
  */
-@TargetApi(11)
 public class DevSupportManagerImpl implements
     DevSupportManager,
     PackagerCommandListener,

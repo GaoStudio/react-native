@@ -57,15 +57,12 @@ class MovingBar extends React.Component<MovingBarProps, MovingBarState> {
 }
 
 class ProgressBarAndroidExample extends React.Component<{}> {
-  static title = '<ProgressBarAndroid>';
-  static description = 'Horizontal bar to show the progress of some operation.';
-
   render() {
     return (
       <RNTesterPage title="ProgressBar Examples">
         <RNTesterBlock title="Horizontal Indeterminate ProgressBar">
           {/* $FlowFixMe(>=0.78.0 site=react_native_android_fb) This issue was
-            * found when making Flow check .android.js files. */}
+           * found when making Flow check .android.js files. */}
           <ProgressBar styleAttr="Horizontal" />
         </RNTesterBlock>
 
@@ -75,7 +72,7 @@ class ProgressBarAndroidExample extends React.Component<{}> {
 
         <RNTesterBlock title="Horizontal Black Indeterminate ProgressBar">
           {/* $FlowFixMe(>=0.78.0 site=react_native_android_fb) This issue was
-            * found when making Flow check .android.js files. */}
+           * found when making Flow check .android.js files. */}
           <ProgressBar styleAttr="Horizontal" color="black" />
         </RNTesterBlock>
 
@@ -91,4 +88,13 @@ class ProgressBarAndroidExample extends React.Component<{}> {
   }
 }
 
-module.exports = ProgressBarAndroidExample;
+exports.title = '<ProgressBarAndroid>';
+exports.description = 'Horizontal bar to show the progress of some operation.';
+exports.examples = [
+  {
+    title: 'Simple progress bar',
+    render: function(): React.Element<typeof ProgressBarAndroidExample> {
+      return <ProgressBarAndroidExample />;
+    },
+  },
+];

@@ -7,11 +7,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import <React/RCTMountingManagerDelegate.h>
+#import <React/RCTPrimitives.h>
 #import <react/core/ReactPrimitives.h>
 #import <react/mounting/ShadowView.h>
 #import <react/mounting/ShadowViewMutation.h>
-#import <React/RCTPrimitives.h>
-#import <React/RCTMountingManagerDelegate.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,16 +22,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface RCTMountingManager : NSObject
 
-@property (nonatomic, weak) id <RCTMountingManagerDelegate> delegate;
+@property (nonatomic, weak) id<RCTMountingManagerDelegate> delegate;
 @property (nonatomic, strong) RCTComponentViewRegistry *componentViewRegistry;
 
 /**
- * Transfroms mutation insturctions to mount items and execute them.
- * The order of mutation tnstructions matters.
+ * Transfroms mutation instructions to mount items and executes them.
+ * The order of mutation instructions matters.
  * Can be called from any thread.
  */
-- (void)performTransactionWithMutations:(facebook::react::ShadowViewMutationList)mutations
-                                rootTag:(ReactTag)rootTag;
+- (void)performTransactionWithMutations:(facebook::react::ShadowViewMutationList)mutations rootTag:(ReactTag)rootTag;
 
 /**
  * Suggests preliminary creation of a component view of given type.
@@ -40,6 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)optimisticallyCreateComponentViewWithComponentHandle:(facebook::react::ComponentHandle)componentHandle;
 
+- (void)synchronouslyUpdateViewOnUIThread:(ReactTag)reactTag
+                                 oldProps:(facebook::react::SharedProps)oldProps
+                                 newProps:(facebook::react::SharedProps)newProps;
 @end
 
 NS_ASSUME_NONNULL_END

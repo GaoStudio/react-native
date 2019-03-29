@@ -93,7 +93,7 @@ class NetworkImageCallbackExample extends React.Component<
                     `✔ Prefetch OK (+${new Date() - mountTime}ms)`,
                   );
                   Image.queryCache([IMAGE_PREFETCH_URL]).then(map => {
-                    const result = map.get(IMAGE_PREFETCH_URL);
+                    const result = map[IMAGE_PREFETCH_URL];
                     if (result) {
                       this._loadEventFired(
                         `✔ queryCache "${result}" (+${new Date() -
@@ -334,6 +334,71 @@ class MultipleSourcesExample extends React.Component<
     );
   }
 }
+
+const fullImage = {
+  uri: 'https://facebook.github.io/react-native/img/opengraph.png',
+};
+const smallImage = {
+  uri: 'https://facebook.github.io/react-native/img/favicon.png',
+};
+
+const styles = StyleSheet.create({
+  base: {
+    width: 38,
+    height: 38,
+  },
+  progress: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: 100,
+  },
+  leftMargin: {
+    marginLeft: 10,
+  },
+  background: {
+    backgroundColor: '#222222',
+  },
+  sectionText: {
+    marginVertical: 6,
+  },
+  nestedText: {
+    marginLeft: 12,
+    marginTop: 20,
+    backgroundColor: 'transparent',
+    color: 'white',
+  },
+  resizeMode: {
+    width: 90,
+    height: 60,
+    borderWidth: 0.5,
+    borderColor: 'black',
+  },
+  resizeModeText: {
+    fontSize: 11,
+    marginBottom: 3,
+  },
+  icon: {
+    width: 15,
+    height: 15,
+  },
+  horizontal: {
+    flexDirection: 'row',
+  },
+  gif: {
+    flex: 1,
+    height: 200,
+  },
+  base64: {
+    flex: 1,
+    height: 50,
+    resizeMode: 'contain',
+  },
+  touchableText: {
+    fontWeight: '500',
+    color: 'blue',
+  },
+});
 
 exports.displayName = (undefined: ?string);
 exports.framework = 'React';
@@ -771,10 +836,7 @@ exports.examples = [
       return (
         <Image
           style={styles.gif}
-          source={{
-            uri:
-              'https://38.media.tumblr.com/9e9bd08c6e2d10561dd1fb4197df4c4e/tumblr_mfqekpMktw1rn90umo1_500.gif',
-          }}
+          source={require('./tumblr_mfqekpMktw1rn90umo1_500.gif')}
         />
       );
     },
@@ -890,68 +952,3 @@ exports.examples = [
     },
   },
 ];
-
-const fullImage = {
-  uri: 'https://facebook.github.io/react-native/img/opengraph.png',
-};
-const smallImage = {
-  uri: 'https://facebook.github.io/react-native/img/favicon.png',
-};
-
-const styles = StyleSheet.create({
-  base: {
-    width: 38,
-    height: 38,
-  },
-  progress: {
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: 100,
-  },
-  leftMargin: {
-    marginLeft: 10,
-  },
-  background: {
-    backgroundColor: '#222222',
-  },
-  sectionText: {
-    marginVertical: 6,
-  },
-  nestedText: {
-    marginLeft: 12,
-    marginTop: 20,
-    backgroundColor: 'transparent',
-    color: 'white',
-  },
-  resizeMode: {
-    width: 90,
-    height: 60,
-    borderWidth: 0.5,
-    borderColor: 'black',
-  },
-  resizeModeText: {
-    fontSize: 11,
-    marginBottom: 3,
-  },
-  icon: {
-    width: 15,
-    height: 15,
-  },
-  horizontal: {
-    flexDirection: 'row',
-  },
-  gif: {
-    flex: 1,
-    height: 200,
-  },
-  base64: {
-    flex: 1,
-    height: 50,
-    resizeMode: 'contain',
-  },
-  touchableText: {
-    fontWeight: '500',
-    color: 'blue',
-  },
-});

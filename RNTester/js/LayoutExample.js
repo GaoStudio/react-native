@@ -51,10 +51,6 @@ class CircleBlock extends React.Component<$FlowFixMeProps> {
 }
 
 class LayoutExample extends React.Component<$FlowFixMeProps> {
-  static title = 'Layout - Flexbox';
-  static description = 'Examples of using the flexbox API to layout views.';
-  static displayName = 'LayoutExample';
-
   render() {
     const fiveColoredCircles = [
       <Circle bgColor="#527fe4" key="blue" />,
@@ -178,7 +174,9 @@ class LayoutExample extends React.Component<$FlowFixMeProps> {
         </RNTesterBlock>
         <RNTesterBlock title="Flex Wrap">
           <CircleBlock style={{flexWrap: 'wrap'}}>
-            {'oooooooooooooooo'.split('').map((char, i) => <Circle key={i} />)}
+            {'oooooooooooooooo'.split('').map((char, i) => (
+              <Circle key={i} />
+            ))}
           </CircleBlock>
         </RNTesterBlock>
       </RNTesterPage>
@@ -196,4 +194,14 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = LayoutExample;
+exports.title = 'Layout - Flexbox';
+exports.description = 'Examples of using the flexbox API to layout views.';
+exports.displayName = 'LayoutExample';
+exports.examples = [
+  {
+    title: 'Simple layout using flexbox',
+    render: function(): React.Element<typeof LayoutExample> {
+      return <LayoutExample />;
+    },
+  },
+];
